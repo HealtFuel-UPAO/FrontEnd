@@ -5,6 +5,11 @@ import { Router } from '@angular/router';
 
 export const navbarDataUser = [
   {
+    routerLink: '/usuario/rutinasUsuario',
+    icon: 'fa-solid fa-bookmark',
+    label: 'Rutinas'
+  },
+  {
     routerLink: '/usuario/perfilUsuario',
     icon: 'fa-solid fa-user',
     label: 'Perfil'
