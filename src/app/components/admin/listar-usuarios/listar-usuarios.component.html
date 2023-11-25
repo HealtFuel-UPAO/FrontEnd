@@ -1,0 +1,31 @@
+
+<app-side-user></app-side-user>
+
+<div class="contenido">
+  <main class="table">
+    <section class="table__header">
+      <h1>Lista de Usuarios</h1>
+    </section>
+    <section class="table__body">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4" *ngFor="let usuario of misUsuarios">
+            <div class="card mb-4">
+              <img src="../../../../assets/user2.png" class="card-img-top" alt="Avatar" style="height: 50%;">
+              <div class="card-body">
+                <h5 class="card-title">{{ usuario.firstName }} {{ usuario.lastName }}</h5>
+                <p class="card-text">{{ usuario.description }}</p>
+                <button type="button" class="btn btn-primary" data-toggle="modal" [attr.data-target]="'#modal' + usuario.id">
+                  Ver Descripción
+                </button>
+                <button type="button" class="btn btn-danger" (click)="eliminarUsuario(usuario.id)">
+                  Eliminar Usuario
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>

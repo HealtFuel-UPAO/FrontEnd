@@ -2,11 +2,11 @@ export class Usuario {
   id: number;
   birthDate: Date;
   description: String;
-  email: String;
-  firstName: String;
+  email: string;
+  firstName: string;
   gender: number;
-  lastName: String;
-  password: string;
+  lastName: string;
+  password: String;
   rol: number;
   userName: String;
 }

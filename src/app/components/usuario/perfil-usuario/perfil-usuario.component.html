@@ -1,0 +1,134 @@
+<app-side-user></app-side-user>
+<body>
+  <main class="table">
+    <section class="table__header">
+    </section>
+    <section class="table__body">
+      <div class="container">
+        <div class="profile">
+          <!-- Imagen de portada -->
+          <div class="text-center mt-6">
+            <img src="../../../../assets/user2.png" class="img-fluid rounded-circle" style="width: 100px; height: 100px; margin-right: 30px;">
+          </div>
+
+          <div class="form-group mt-3">
+            <label for="userId">ID de Usuario</label>
+            <input
+            type="text"
+            id="id"
+            [(ngModel)]="user.id"
+            name="id"
+            disabled
+            class="form-control"
+          />
+          </div>
+          <div class="row">
+            <div class="col-md-4">
+              <div class="form-group">
+                <label for="firstName">Nombre</label>
+                <input
+                  type="text"
+                  id="firstName"
+                  [(ngModel)]="user.firstName"
+                  name="firstName"
+                  disabled
+                  class="form-control"
+                />
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group">
+                <label for="lastName">Apellido</label>
+                <input
+                  type="text"
+                  id="lastName"
+                  [(ngModel)]="user.lastName"
+                  name="lastName"
+                  disabled
+                  class="form-control"
+                />
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group">
+                <label for="birthDate">Fecha de Nacimiento</label>
+                <input
+                  type="text"
+                  id="birthDate"
+                  [(ngModel)]="user.birthDate"
+                  name="birthDate"
+                  disabled
+                  class="form-control"
+                />
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-4">
+              <div class="form-group">
+                <label for="userName">Nombre de Usuario</label>
+                <input
+                  type="text"
+                  id="userName"
+                  [(ngModel)]="user.userName"
+                  name="userName"
+                  [disabled]="!editMode"
+                  class="form-control"
+                />
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group">
+                <label for="description">Descripción</label>
+                <input
+                  type="text"
+                  id="description"
+                  [(ngModel)]="user.description"
+                  name="description"
+                  [disabled]="!editMode"
+                  class="form-control"
+                />
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group">
+                <label for="gender">Género</label>
+                <input
+                  type="text"
+                  id="gender"
+                  [(ngModel)]="user.gender"
+                  name="gender"
+                  disabled
+                  class="form-control"
+                />
+              </div>
+            </div>
+          </div>
+          
+          <div class="botones mt-3">
+            <div class="d-grid col-5">
+              <button
+                mat-raised-button
+                color="warn"
+                class="btn"
+              >
+                Atrás
+              </button>
+            </div>
+            <div class="d-grid col-5">
+              <button
+                mat-raised-button
+                color="primary"
+                class="btn"
+                (click)="toggleEditMode()"
+              >
+                {{ editMode ? "Guardar" : "Editar" }}
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</body>
