@@ -1,0 +1,115 @@
+  <app-side-user></app-side-user>
+<body>
+  <div class="contenido">
+    <main class="table">
+      <section class="table__header">
+        <h1>Mis rutinas</h1>
+      </section>
+      <section class="table__body">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-3" *ngFor="let rutina of misRutinas">
+              <div class="card mb-4">
+                <div class="card-body">
+                  <h5 class="card-title">{{ rutina.name }}</h5>
+                  <p class="card-text">{{ rutina.description }}</p>
+                  <button type="button" class="btn btn-primary" data-toggle="modal" [attr.data-target]="'#modal' + rutina.id">
+                    Ver Descripción
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+  
+      <!-- Modales para las rutinas -->
+      <div *ngFor="let rutina of misRutinas">
+        <div class="modal fade" [id]="'modal' + rutina.id" tabindex="-1" role="dialog" [attr.aria-labelledby]="'modal' + rutina.id + 'Label'" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" [attr.id]="'modal' + rutina.id + 'Label'">{{ rutina.name }}</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                {{ rutina.description }}
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                  Cerrar
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    
+    <main class="table">
+      <section class="table__header">
+        <h1>Rutinas que sigo</h1>
+      </section>
+      <section class="table__body">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-3" *ngFor="let rutina of misRutinas">
+              <div class="card mb-4">
+                <div class="card-body">
+                  <h5 class="card-title">{{ rutina.name }}</h5>
+                  <p class="card-text">{{ rutina.description }}</p>
+                  <button type="button" class="btn btn-primary" data-toggle="modal" [attr.data-target]="'#modal' + rutina.id">
+                    Ver Descripción
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div
+        class="modal fade"
+        id="modal2"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="modal2Label"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="modal2Label">
+                Descripción de la Rutina
+              </h5>
+              <button
+                type="button"
+                class="close"
+                data-dismiss="modal"
+                aria-label="Close"
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <!-- Contenido de la descripción de la rutina -->
+              Detalles de la rutina...
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-dismiss="modal"
+              >
+                Cerrar
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</body>

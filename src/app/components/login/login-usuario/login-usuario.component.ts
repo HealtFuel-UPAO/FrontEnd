@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Usuario } from 'src/app/model/usuario';
+import { LoginService } from 'src/app/service/login.service';
 import { UsuarioService } from 'src/app/service/usuario.service';
 import Swal from 'sweetalert2';
-import swal from 'sweetalert2';
 
 @Component({
   selector: 'app-login-usuario',
@@ -15,7 +15,10 @@ export class LoginUsuarioComponent implements OnInit {
   password: string;
   usuario: any;
 
-  constructor(private router: Router, private usuarioService: UsuarioService) {}
+  constructor(
+    private router: Router, 
+    private usuarioService: UsuarioService, 
+    private loginService: LoginService) {}
   ngOnInit(): void {}
 
   login() {
@@ -27,6 +30,12 @@ export class LoginUsuarioComponent implements OnInit {
         .subscribe((data) => {
           this.usuario = data;
           if (this.usuario != null || this.usuario != undefined) {
+
+            this.router.navigateByUrl('usuario/perfilUsuario');
+            this.loginService.setUser(data);
+            console.log(data);
+            let rol = this.loginService.getUserRole();
+
             Swal.fire({
               icon: 'success',
               title:
@@ -37,13 +46,21 @@ export class LoginUsuarioComponent implements OnInit {
               showConfirmButton: false,
               timer: 1500,
             });
+
+            
+
           } else {
             Swal.fire({
               icon: 'error',
               title: 'Datos no válidos',
-              text: 'Datos del usuario no encontrados!',
-              footer:
-                '<a (click)="irRegistro()" >¿Aun no te registras?</a>',
+              text: 'Datos del usuario no encontrados! ¿Aun no te registras?',
+              showCancelButton: true,
+              cancelButtonText: 'Cancelar',
+              confirmButtonText: 'Ir a Registro',
+            }).then((result) => {
+              if (result.isConfirmed) {
+                this.irRegistro();
+              }
             });
           }
         });
